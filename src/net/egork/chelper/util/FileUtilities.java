@@ -77,10 +77,7 @@ public class FileUtilities {
 				}
 				OutputStream stream = null;
 				try {
-					VirtualFile file = location.createChildData(null, fileName);
-					if (file == null) {
-						return;
-					}
+					VirtualFile file = location.findOrCreateChildData(null, fileName);
 					stream = file.getOutputStream(null);
 					stream.write(fileContent.getBytes(Charset.forName("UTF-8")));
 				} catch (IOException ignored) {
@@ -231,7 +228,7 @@ public class FileUtilities {
 				}
 				OutputStream stream = null;
 				try {
-					VirtualFile file = location.createChildData(null, fileName);
+					VirtualFile file = location.findOrCreateChildData(null, fileName);
 					if (file == null) {
 						return;
 					}
@@ -262,10 +259,7 @@ public class FileUtilities {
 				}
 				OutputStream stream = null;
 				try {
-					VirtualFile file = location.createChildData(null, fileName);
-					if (file == null) {
-						return;
-					}
+					VirtualFile file = location.findOrCreateChildData(null, fileName);
 					stream = file.getOutputStream(null);
 					configuration.saveTask(new OutputWriter(stream));
 				} catch (IOException ignored) {
